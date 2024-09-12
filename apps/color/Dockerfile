@@ -7,6 +7,6 @@ RUN apk add --no-cache git \
   && npm install \
   && NODE_ENV=production npm run build
 
-  EXPOSE 3000
+EXPOSE 3000
 
 CMD ["npm", "start"]
