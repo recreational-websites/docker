@@ -16,10 +16,11 @@ services:
       - app-network
 
   main-app:
-    build: ./apps/main
+    build:
+      context: ./apps/main
+      dockerfile: ../Dockerfile
     container_name: main-app
     environment:
-      - NODE_ENV=production
       - METADATA_BASE=${METADATA_BASE}
     networks:
       - app-network
@@ -27,10 +28,11 @@ services:
       - "3000"
 
   polyomino-app:
-    build: ./apps/polyomino
+    build:
+      context: ./apps/polyomino
+      dockerfile: ../Dockerfile
     container_name: polyomino-app
     environment:
-      - NODE_ENV=production
       - METADATA_BASE=${METADATA_BASE}
     networks:
       - app-network
@@ -38,10 +40,11 @@ services:
       - "3000"
 
   color-app:
-    build: ./apps/color
+    build:
+      context: ./apps/color
+      dockerfile: ../Dockerfile
     container_name: color-app
     environment:
-      - NODE_ENV=production
       - METADATA_BASE=${METADATA_BASE}
     networks:
       - app-network
