@@ -1,0 +1,50 @@
+version: '3'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - main-app
+      - polyomino-app
+      - color-app
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    networks:
+      - app-network
+
+  main-app:
+    build: ./apps/main
+    container_name: main-app
+    environment:
+      - METADATA_BASE=${METADATA_BASE}
+    networks:
+      - app-network
+    expose:
+      - "3000"
+
+  polyomino-app:
+    build: ./apps/polyomino
+    container_name: polyomino-app
+    environment:
+      - METADATA_BASE=${METADATA_BASE}
+    networks:
+      - app-network
+    expose:
+      - "3000"
+
+  color-app:
+    build: ./apps/color
+    container_name: color-app
+    environment:
+      - METADATA_BASE=${METADATA_BASE}
+    networks:
+      - app-network
+    expose:
+      - "3000"
+
+networks:
+  app-network:
+    driver: bridge
