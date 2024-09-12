@@ -19,6 +19,7 @@ services:
     build: ./apps/main
     container_name: main-app
     environment:
+      - NODE_ENV=production
       - METADATA_BASE=${METADATA_BASE}
     networks:
       - app-network
@@ -29,6 +30,7 @@ services:
     build: ./apps/polyomino
     container_name: polyomino-app
     environment:
+      - NODE_ENV=production
       - METADATA_BASE=${METADATA_BASE}
     networks:
       - app-network
@@ -39,6 +41,7 @@ services:
     build: ./apps/color
     container_name: color-app
     environment:
+      - NODE_ENV=production
       - METADATA_BASE=${METADATA_BASE}
     networks:
       - app-network
