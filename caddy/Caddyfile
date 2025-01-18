@@ -1,0 +1,3 @@
+seui.is-a.dev {
+  reverse_proxy nginx:80
+}

@@ -1,9 +1,20 @@
 services:
-  nginx:
-    build: ./nginx
+  caddy:
+    image: caddy
+    container_name: caddy
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
     depends_on:
       - main-app
       - polyomino-app
@@ -13,6 +24,10 @@ services:
       - ./nginx/ssl:/etc/nginx/ssl
     networks:
       - app-network
+    expose:
+      - "80"
+      - "443"
+    restart: unless-stopped
 
   main-app:
     build:
@@ -25,6 +40,7 @@ services:
       - app-network
     expose:
       - "3000"
+    restart: unless-stopped
 
   polyomino-app:
     build:
@@ -37,6 +53,7 @@ services:
       - app-network
     expose:
       - "3000"
+    restart: unless-stopped
 
   color-app:
     build:
@@ -49,6 +66,7 @@ services:
       - app-network
     expose:
       - "3000"
+    restart: unless-stopped
 
 networks:
   app-network:
