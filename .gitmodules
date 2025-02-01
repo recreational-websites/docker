@@ -7,3 +7,6 @@
 [submodule "color"]
 	path = apps/color
 	url = https://github.com/recreational-websites/color.git
+[submodule "chess"]
+	path = apps/chess
+	url = https://github.com/recreational-websites/chess.git

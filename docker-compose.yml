@@ -19,6 +19,7 @@ services:
       - main-app
       - polyomino-app
       - color-app
+      - chess-app
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
@@ -58,6 +59,19 @@ services:
       context: ./apps/color
       dockerfile: ../Dockerfile
     container_name: color-app
+    environment:
+      - METADATA_BASE=${METADATA_BASE}
+    networks:
+      - app-network
+    expose:
+      - "3000"
+    restart: unless-stopped
+
+  chess-app:
+    build:
+      context: ./apps/chess
+      dockerfile: ../Dockerfile
+    container_name: chess-app
     environment:
       - METADATA_BASE=${METADATA_BASE}
     networks:
