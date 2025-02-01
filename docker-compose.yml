@@ -17,7 +17,7 @@ services:
     image: nginx:alpine
     depends_on:
       - main-app
-      - polyomino-app
+      - polyform-app
       - color-app
       - chess-app
     volumes:
@@ -41,11 +41,11 @@ services:
       - "3000"
     restart: unless-stopped
 
-  polyomino-app:
+  polyform-app:
     build:
-      context: ./apps/polyomino
+      context: ./apps/polyform
       dockerfile: ../Dockerfile
-    container_name: polyomino-app
+    container_name: polyform-app
     environment:
       - METADATA_BASE=${METADATA_BASE}
     networks:

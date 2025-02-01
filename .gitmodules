@@ -1,9 +1,9 @@
 [submodule "main"]
 	path = apps/main
 	url = https://github.com/recreational-websites/main.git
-[submodule "polyomino"]
-	path = apps/polyomino
-	url = https://github.com/recreational-websites/polyomino.git
+[submodule "polyform"]
+	path = apps/polyform
+	url = https://github.com/recreational-websites/polyform.git
 [submodule "color"]
 	path = apps/color
 	url = https://github.com/recreational-websites/color.git
